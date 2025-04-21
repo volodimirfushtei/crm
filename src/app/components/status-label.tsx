@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx'
+
 export enum Status {
     Active = 'active',
     NotActive = 'not-active',
@@ -13,8 +14,8 @@ export interface StatusLabelProps {
     disabled?: boolean;
 }
 
-export default function StatusLabel({children, status,disabled}: StatusLabelProps) {
-    return    <div
+export default function StatusLabel({children, status, disabled}: StatusLabelProps) {
+    return <div
         className={clsx(
             'inline-flex items-center py-1 px-3.5 rounded-3xl text-sm font-medium',
             status === Status.Active && 'text-green-700 bg-green-100',
@@ -25,5 +26,7 @@ export default function StatusLabel({children, status,disabled}: StatusLabelProp
                 ['opacity-75 cursor-not-allowed']: disabled,
             },
         )}
-    ><div className="w-1 h-1 mr-2 rounded-full bg-current"/>{children}</div>;
+    >
+        <div className="w-1 h-1 mr-2 rounded-full bg-current"/>
+        {children}</div>;
 }

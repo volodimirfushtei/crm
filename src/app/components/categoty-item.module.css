@@ -1,0 +1,7 @@
+.alternateColor1 {
+    color: #e9d5ff; /* Color for even indexed items */
+}
+
+.alternateColor2 {
+    color: #d9f99d; /* Color for odd indexed items, replace with your desired color */
+}
