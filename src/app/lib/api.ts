@@ -72,22 +72,14 @@ export enum CompanyStatus {
 
     Suspended = 'suspended',
 
-
 }
-
 
 export interface Company {
 
 
     id: string;
-
-
     title: string;
-
-
     description: string;
-
-
     status: CompanyStatus;
 
 

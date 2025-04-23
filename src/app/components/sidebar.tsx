@@ -19,8 +19,8 @@ export default function Sidebar({}: SidebarProps) {
     };
 
     return (
-        <motion.aside initial={{opacity: 0, x: 100}}
-                      animate={{opacity: 1, x: 0, transition: {duration: 0.5}}}>
+        <motion.aside initial={{opacity: 0, x: -100}}
+                      animate={{opacity: 1, x: 0, transition: {duration: 1}}}>
             <aside className="fixed top-0 left-0 z-40 w-60 h-screen">
                 <div className="flex flex-col h-full overflow-y-auto bg-gray-900">
                     <Image

@@ -1,14 +1,20 @@
 import React from 'react';
-import Header from '@/app/components/header';
+import Toolbar from '@/app/components/tool-bar';
+import AddPromotionsButton from "@/app/components/add-promotions-button";
+import SearchInput from "@/app/components/search-input";
 
 export interface PageProps {
     params: { id: string };
 }
 
 export default function Page({params}: PageProps) {
+
     return (
         <div className="py-6 px-10">
-            <p>{`Information about company (${params.id})`}</p>
+
+            <Toolbar action={<AddPromotionsButton/>}>
+                <SearchInput/>
+            </Toolbar>
         </div>
     );
 }

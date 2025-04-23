@@ -5,6 +5,6 @@ export interface PageProps {
     params: { id: string };
 }
 
-export default function Page({}: PageProps) {
+export default async function Page({params}: PageProps) {
     return <Header>Dashboard</Header>;
 }

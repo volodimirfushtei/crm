@@ -17,9 +17,9 @@ export default function StatCard({type, label, counter}: StatCardProps) {
     return (
         <div
             className={clsx(
-                'rounded',
+                'rounded  bg-black-10',
                 type === StatCardType.Dark &&
-                'pt-3 px-3 bg-gray-900 odd:text-purple-200 even:text-lime-200 text-right',
+                'pt-3 px-3 bg-gray-900 odd:text-purple-200 even:text-lime-200 text-right ',
                 type === StatCardType.Gradient && [
                     styles.gradient,
                     'p-7 bg-purple-200 text-gray-900 text-left',

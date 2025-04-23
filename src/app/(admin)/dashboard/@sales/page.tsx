@@ -7,7 +7,7 @@ import DashboardCard from '@/app/components/dashboard-card';
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 export default async function Page() {
-    await delay(4000);
+    await delay(3000);
     const data = await getSummarySales();
 
     return (

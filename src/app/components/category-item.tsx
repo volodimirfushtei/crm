@@ -21,7 +21,8 @@ const categories = [
 
 function CategoryItem({title, num, index}: CategoryItemProps) {
     return (
-        <div className="grid rounded-[4px] w-[144px] h-[106px] bg-[#111827] relative">
+        <div
+            className="grid rounded-[4px] w-[144px] h-[106px] bg-[#111827] relative ">
             <div className="  blockrounded-[20px] w-[16px] h-[2px] bg-[#fafafa] absolute top-3 left-3 "></div>
             <div className="font-normal text-[14px] leading-[1.42857] text-[#fafafa] pl-3 pt-[22px]">{title}</div>
             <div

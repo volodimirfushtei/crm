@@ -6,12 +6,23 @@ export interface ModalProps {
     children?: React.ReactNode;
     show: boolean;
     onCloseAction: () => void;
+    size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'; // ← новий проп
 }
 
-export default function Modal({show, children, onCloseAction}: ModalProps) {
-
+export default function Modal({show, children, onCloseAction, size}: ModalProps) {
+    const sizeMap = {
+        sm: 'sm:max-w-sm',
+        md: 'sm:max-w-md',
+        lg: 'sm:max-w-lg',
+        xl: 'sm:max-w-xl',
+        '2xl': 'sm:max-w-2xl',
+        '3xl': 'sm:max-w-3xl',
+        '4xl': 'sm:max-w-4xl',
+    };
+    const modalSize = sizeMap[size || '2xl'];
     const handleClose = () => {
-        onCloseAction(); // This keeps TS happy (named properly) and satisfies Dialog's onClose
+        onCloseAction();
+
     };
     return (
         <Transition as={Fragment} appear show={show}>
@@ -19,7 +30,6 @@ export default function Modal({show, children, onCloseAction}: ModalProps) {
                 as="div"
                 className="fixed inset-0 z-50 flex items-center"
                 onClose={handleClose}
-
             >
                 <Transition
                     as={Fragment}
@@ -30,12 +40,11 @@ export default function Modal({show, children, onCloseAction}: ModalProps) {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                     show={show}
-
                 >
                     <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"/>
                 </Transition>
                 <div role="dialog" aria-modal="true"
-                     className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all p-7 mx-auto sm:my-10 sm:w-full sm:max-w-2xl">
+                     className={`relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all p-7 mx-auto sm:my-10 sm:w-full ${modalSize}`}>
                     {children}
                 </div>
             </Dialog>
