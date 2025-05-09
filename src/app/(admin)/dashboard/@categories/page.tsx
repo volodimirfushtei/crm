@@ -6,6 +6,7 @@ import getCountById from '@/app/lib/utils/getCountById';
 import StatCard, {StatCardType} from '@/app/components/stat-card/stat-card';
 import DashboardCard from '@/app/components/dashboard-card';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PageProps {
 
 }

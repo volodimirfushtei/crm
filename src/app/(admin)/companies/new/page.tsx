@@ -2,6 +2,7 @@
 import React from 'react';
 import CompanyForm from "@/app/components/company-form";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PageProps {
 }
 

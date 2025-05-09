@@ -1,23 +1,23 @@
 'use client';
+
 import React from 'react';
-import PromotionsForm, {PromotionsFormProps} from '@/app/components/promotions-form';
+import PromotionsForm from '@/app/components/promotions-form';
 import Modal, {ModalProps} from '@/app/components/modal';
 
-
-export interface PromotionsFormModalProps extends ModalProps {
-
-    onSubmitAction: PromotionsFormProps['onSubmitAction'];
+export interface PromotionFormModal extends ModalProps {
+    companyId: string;
+    onCloseAction: () => void;
 }
 
 export default function PromotionsFormModal({
-                                                onSubmitAction,
+                                                companyId,
+                                                onCloseAction,
                                                 ...rest
-                                            }: PromotionsFormModalProps) {
+                                            }: PromotionFormModal) {
     return (
-        <div>
-            <Modal {...rest} size="sm">
-                <PromotionsForm onSubmitAction={onSubmitAction}/>
-            </Modal>
-        </div>
+        <Modal {...rest} onCloseAction={onCloseAction}>
+            <PromotionsForm companyId={companyId} onSubmit={() => onCloseAction()}/>
+        </Modal>
     );
 }
+

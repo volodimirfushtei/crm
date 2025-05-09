@@ -1,28 +1,34 @@
 'use client';
 
-import Button from "@/app/components/button";
-import PromotionsFormModal from "@/app/components/company-promotions-modal";
-import {motion} from 'framer-motion'
-import React, {useState} from 'react';
-import dynamic from 'next/dynamic';
+import React from 'react';
+import {useRouter} from 'next/navigation';
+import Button from '@/app/components/button';
+import {motion} from 'framer-motion';
 
-const CompanyFormModal = dynamic(() => import('./company-promotions-modal'), {
+export interface AddPromotionButtonProps {
+    companyId: string;
+}
 
-    ssr: false,
-});
-export default function AddPromotionsButton() {
-    const [show, setShow] = useState(false)
+export default function AddPromotionButton({
+                                               companyId,
+                                           }: AddPromotionButtonProps) {
+
+    console.log('Company ID:', companyId);
+
+
+    const router = useRouter();
+
+
     return (
         <motion.div initial={{opacity: 0, x: 100}}
-                    animate={{opacity: 1, x: 0, transition: {duration: 1}}}>
-            <>
-                <Button onClick={() => setShow(true)}>Add promotions</Button>
-                <PromotionsFormModal
-                    onSubmitAction={console.log}
-                    show={show}
-                    onCloseAction={() => setShow(false)}
-                />
-            </>
+                    animate={{opacity: 1, x: 0, transition: {duration: 1.5}}}>
+            <Button
+                onClick={() =>
+                    router.push(`/companies/${companyId}/new-promotion`, {scroll: false})
+                }
+            >
+                Add promotions
+            </Button>
         </motion.div>
     );
 }

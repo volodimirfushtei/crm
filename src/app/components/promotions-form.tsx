@@ -1,55 +1,101 @@
+// components/PromotionForm.tsx
+
 'use client';
-import React from 'react';
-import {Form, Formik} from 'formik';
+
+import React, { useState } from 'react';
+import { Form, Formik } from 'formik';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { createPromotion, getCompany } from '@/app/lib/api';
 import Button from '@/app/components/button';
 import InputField from '@/app/components/input-field';
-import LogoUploader from "@/app/components/logo-uploader";
+import LogoUploader from '@/app/components/logo-uploader';
 
-export type PromotionsFieldValues = {
-    title: string;
-    description: string;
-    discount: string;
-    image: any;
-
-};
-
-const initialValues: PromotionsFieldValues = {
-    title: '',
-    description: '',
-    discount: '',
-    image: '',
-};
-
-export interface PromotionsFormProps {
-    onSubmitAction: (values: PromotionsFieldValues) => void | Promise<void>;
+export interface PromotionFieldValues {
+  title: string;
+  description: string;
+  discount: number;
+  avatar: string;
 }
 
-export default function PromotionsForm({onSubmitAction}: PromotionsFormProps) {
-    return (
-        <Formik initialValues={initialValues} onSubmit={onSubmitAction}>
-            {({setFieldValue}) => (
-                <Form className="flex flex-col gap-7">
-                    <p className="text-xl font-semibold">Add Promotion</p>
-                    <InputField label="Title" name="title" placeholder="Title"/>
-                    <InputField
-                        label="Description"
-                        name="description"
-                        placeholder="Description"
-                    />
-                    <InputField
-                        label="Discount"
-                        name="discount"
-                        placeholder="-40%"
-                    />
-                    <LogoUploader
-                        className=" w-[308px] h-[184px] gap-[8px] flex-col "
-                        label="Image"
-                        placeholder="Upload image"
-                        onChange={(file) => setFieldValue('image', file)}
-                    />
-                    <Button type="submit">Add Promotion</Button>
-                </Form>
-            )}
-        </Formik>
-    );
+const initialValues: PromotionFieldValues = {
+  title: '',
+  description: '',
+  discount: 0,
+  avatar: '',
+};
+
+export interface PromotionFormProps {
+  companyId: string;
+  onSubmit?: (values: PromotionFieldValues) => void | Promise<void>;
 }
+
+export default function PromotionForm({ companyId, onSubmit }: PromotionFormProps) {
+  const queryClient = useQueryClient();
+  const [avatarUrl, setAvatarUrl] = useState<string>();
+
+  const { data: company } = useQuery({
+    queryKey: ['companies', companyId],
+    queryFn: () => getCompany(companyId),
+    staleTime: 10 * 1000,
+    enabled: Boolean(companyId),
+  });
+
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: createPromotion,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['promotions', companyId] });
+      await queryClient.invalidateQueries({ queryKey: ['promotions'], exact: true });
+    },
+  });
+
+  const handleSubmit = async (values: PromotionFieldValues) => {
+    try {
+      if (!company) throw new Error('Company not found');
+
+      await mutateAsync({
+        ...values,
+        discount: Number(values.discount) || 0,
+        avatar: avatarUrl,
+        companyId: company.id,
+        companyTitle: company.title,
+      });
+
+      if (onSubmit) {
+        onSubmit(values);
+      }
+    } catch (error: any) {
+      console.error('Помилка при створенні акції:', error);
+      if (error.message.includes('Max number of elements')) {
+        alert('Максимальна кількість акцій досягнута.');
+      } else {
+        alert('Сталася помилка при створенні акції.');
+      }
+    }
+  };
+
+  return (
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Form className="flex flex-col gap-10">
+        <p className="mb-0.5 text-xl">Add new promotion</p>
+        <div className="flex flex-col gap-5 ">
+          <InputField required label="Title" placeholder="Title" name="title" />
+          <InputField required label="Description" placeholder="Description" name="description" />
+          <InputField required type="number" label="Discount (%)" placeholder="Discount" name="discount" />
+          <LogoUploader
+            label="Image"
+            placeholder="Upload photo"
+            id="avatar"
+            onUploadAction={(url) => {
+
+              setAvatarUrl(url || undefined);
+            }}
+          />
+        </div>
+        <Button type="submit" disabled={isPending}>
+          {isPending ? 'Creating...' : 'Add promotion'}
+        </Button>
+      </Form>
+    </Formik>
+  );
+}
+

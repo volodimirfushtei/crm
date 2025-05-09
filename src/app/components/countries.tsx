@@ -22,7 +22,7 @@ function Countries({children, countries = defaultCountries}: CountriesProps) {
             <ul className="absolute bottom-5 left-[22px]">
                 {countries.map((country, index) => (
                     <li key={index}
-                        className="flex flex-row items-center gap-1.5 font-medium text-[14px] leading-[1.42857] text-[#111827]">
+                        className="flex flex-row  items-center gap-1.5 font-medium text-[14px] leading-[1.42857] text-[#111827]">
                         <div className="w-2 h-2 rounded-full bg-[#e9d5ff] pt-0.5"></div>
                         {country.name} - {country.count}
                     </li>

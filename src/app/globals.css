@@ -1,13 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
 
-}
 
-body {
-    background-color: #FAFAFA;
+base {
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    & body {
+        background: #fafafa;
+        max-width: 1440px;
+
+    }
+
+    .aos-init:not(.aos-animate) {
+        visibility: hidden;
+    }
+
+    @font-face {
+        font-family: 'Pacifico';
+        src: url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    }
+
+
 }

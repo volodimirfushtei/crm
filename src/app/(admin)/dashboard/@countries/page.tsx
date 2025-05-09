@@ -6,6 +6,7 @@ import DashboardCard from '@/app/components/dashboard-card';
 import getCountById from '@/app/lib/utils/getCountById';
 import {getCompanies, getCountries} from '@/app/lib/api';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PageProps {
 
 }

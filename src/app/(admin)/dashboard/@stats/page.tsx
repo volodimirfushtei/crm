@@ -2,6 +2,7 @@ import React from 'react';
 import {getSummaryStats} from "@/app/lib/api"
 import StatCard, {StatCardType} from '../../../components/stat-card';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PageProps {
 
 }

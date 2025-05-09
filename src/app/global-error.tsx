@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from "next/image";
-import {auto} from "@popperjs/core";
+
 
 export interface GlobalErrorProps {
     config: object;

@@ -1,4 +1,8 @@
+'use client';
+
 import React from 'react';
+
+
 import Sidebar from '@/app/components/sidebar';
 
 export interface LayoutProps {
@@ -9,7 +13,7 @@ export default function Layout({children}: LayoutProps) {
     return (
         <>
             <Sidebar/>
-            <div className="ml-60">{children}</div>
+            <div className="ml-0">{children}</div>
         </>
     );
 }

@@ -1,73 +1,78 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import clsx from 'clsx';
-import StatusLabel, {Status} from '@/app/components/status-label';
+import StatusLabel from '@/app/components/status-label';
+import { Company, deleteCompany } from '@/app/lib/api';
+import ButtonDelete from '@/app/components/button-delete';
 
 export interface CompanyRowProps {
-    id: number;
-    category: string;
-    company: string;
-    status: Status;
-    promotion: boolean;
-    country: string;
-    joinedDate: string;
-    logoUrl: string;
+  company: Company;
+  avatar?: string;
 }
 
-const labelByStatus = {
-    [Status.Active]: 'Active',
-    [Status.NotActive]: 'Not Active',
-    [Status.Pending]: 'Pending',
-    [Status.Suspended]: 'Suspended',
-};
+export default function CompanyRow({ company }: CompanyRowProps) {
 
-export default function CompanyRow({
-                                       id,
-                                       category,
-                                       company,
-                                       logoUrl,
-                                       status,
-                                       promotion,
-                                       country,
-                                       joinedDate,
-                                   }: CompanyRowProps) {
-    return (
-        <tr className="h-14 text-center text-gray-900 bg-white">
-            <td className="text-xs font-medium text-blue-700 rounded-l border-l-4 border-blue-700">
-                {category}
-            </td>
-            <td>
-                <a className="inline-flex flex-row items-center gap-2" href={`/companies/${id}`}>{company}<Image
-                    alt={`${company} logo`}
-                    src={logoUrl || '/placeholder-logo.png'}
-                    height={20}
-                    width={20}/></a>
-            </td>
-            <td>
-                <StatusLabel status={status}>{labelByStatus[status]}</StatusLabel>
-            </td>
-            <td>
-                <div className="inline-flex items-center gap-1">
-                    <Image
-                        width={16}
-                        height={16}
-                        src={`/icons/${promotion ? 'check' : 'mark'}.svg`}
-                        alt="promotion icon"
-                    />
-                    <span
-                        className={clsx(
-                            'text-sm font-medium',
-                            promotion ? 'text-green-700' : 'text-red-700',
-                        )}
-                    >
-            {promotion ? 'Yes' : 'No'}
+
+  async function handleDeleteCompany(companyId: string) {
+    if (confirm('Are you sure you want to delete this company?')) {
+      try {
+        await deleteCompany(companyId);
+        alert('Company deleted successfully!');
+        // перезавантажити дані чи зробити навігацію
+      } catch (error) {
+        console.error('Failed to delete company:', error);
+        alert('Failed to delete company.');
+      }
+    }
+  }
+
+  return (
+    <tr
+      className="h-14 text-center text-gray-900 drop-shadow-md bg-white hover:bg-gradient-to-br from-[#A5A5A5] to-white overflow-hidden focus-within:bg-gray-700 ">
+      <td className="text-xs font-medium text-blue-700 rounded-l border-l-4 border-blue-700 ">
+        {company.categoryTitle}
+      </td>
+      <td>
+        <Link className="flex flex-row gap-1 items-center justify-center"
+              href={`/companies/${company.id}`}><img className="object-cover"
+                                                     width={28}
+                                                     height={28}
+                                                     src={company.avatar && company.avatar.startsWith('http') ? company.avatar : `/icons/${company.avatar || 'company-logo'}.svg`}
+                                                     alt={'avatar'} />{company.title}
+        </Link>
+      </td>
+      <td>
+        <StatusLabel status={company.status} />
+      </td>
+      <td>
+        <div className="inline-flex items-center gap-1">
+          <Image
+            width={16}
+            height={16}
+            src={`/icons/${company.hasPromotions ? 'check' : 'mark'}.svg`}
+            alt="promotion icon"
+          />
+          <span
+            className={clsx(
+              'text-sm font-medium',
+              company.hasPromotions ? 'text-green-700' : 'text-red-700',
+            )}
+          >
+            {company.hasPromotions ? 'Yes' : 'No'}
           </span>
-                </div>
-            </td>
-            <td>{country}</td>
-            <td className="rounded-r">
-                {new Date(joinedDate).toLocaleDateString('uk-UA')}
-            </td>
-        </tr>
-    );
+        </div>
+      </td>
+      <td>{company.countryTitle}</td>
+      <td className="rounded-r">
+        {new Date(company.joinedDate).toLocaleDateString('uk-UA')}
+      </td>
+      <td className="rounded-r">
+        <ButtonDelete onClick={() => handleDeleteCompany(company.id)} className="text-red-500">
+          Delete
+        </ButtonDelete>
+      </td>
+    </tr>
+  );
 }
+

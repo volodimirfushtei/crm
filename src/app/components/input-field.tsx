@@ -7,6 +7,8 @@ export interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElem
     label?: string;
     name: string;
     id?: string;
+    as?: 'input' | 'textarea';
+    rows?: number;
 }
 
 export default function InputField({label, id, name, ...rest}: InputFieldProps) {

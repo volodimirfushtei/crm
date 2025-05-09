@@ -5,6 +5,7 @@ import {useRouter} from 'next/navigation';
 import CompanyForm from '@/app/components/company-form';
 import Modal from '@/app/components/modal';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PageProps {
 }
 
