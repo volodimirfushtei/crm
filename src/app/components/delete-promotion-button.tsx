@@ -1,7 +1,7 @@
 // components/DeletePromotionButton.tsx
 
 'use client';
-
+import toast from 'react-hot-toast';
 import React from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deletePromotion } from '@/app/lib/api';
@@ -29,9 +29,9 @@ export default function DeletePromotionButton({ promotionId }: DeletePromotionBu
         if (confirm('Ви дійсно хочете видалити цю акцію?')) {
           try {
             await mutateAsync();
-            alert('Акція видалена!');
+            toast.success('Акція видалена!');
           } catch (error: any) {
-            alert(`Не вдалося видалити акцію: ${error.message}`);
+            toast.error(`Не вдалося видалити акцію: ${error.message}`);
           }
         }
       }}

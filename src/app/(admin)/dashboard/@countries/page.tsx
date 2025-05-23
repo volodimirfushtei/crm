@@ -1,37 +1,50 @@
 import React from 'react';
-import Image from 'next/image';
-import clsx from 'clsx';
+import CountriesMapClient from '@/app/components/countries-map';
+import { Country as ApiCountry, getCountries } from '@/app/lib/api';
+import { CountryMap as MapCountry } from '../../../../../types/country';
+import DashboardCard from '@/app/components/dashboard-card'; // тип, який очікує CountriesMap
 
-import DashboardCard from '@/app/components/dashboard-card';
-import getCountById from '@/app/lib/utils/getCountById';
-import {getCompanies, getCountries} from '@/app/lib/api';
+export default async function Page() {
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface PageProps {
 
+  const apiCountries: ApiCountry[] = await getCountries();
+
+
+  const someLookup: Record<string, { lat: number; lng: number }> = {
+    canada: { lat: 56.1304, lng: -106.3468 },
+    usa: { lat: 37.0902, lng: -95.7129 },
+
+
+    italia: { lat: 41.8719, lng: 12.5674 },
+    spain: { lat: 40.4637, lng: -3.7492 },
+    ukraine: { lat: 48.3794, lng: 31.1656 },
+
+  };
+
+
+  const mapCountries: MapCountry[] = apiCountries.map((c) => {
+    const key = c.title.toLowerCase().replace(/\s+/g, '_'); // 🔁 змінено
+    const coords = someLookup[key];
+
+    if (!coords) {
+      console.warn(`No coords  "${c.title}" → "${key}"`);
+    }
+
+    return {
+      name: c.title,
+      count: Math.floor(Math.random() * 100),
+      lat: coords?.lat ?? 0,
+      lng: coords?.lng ?? 0,
+    };
+  });
+
+
+  return (
+
+    <DashboardCard label="Countrties">
+      <CountriesMapClient countries={mapCountries} />
+    </DashboardCard>
+
+  );
 }
 
-export default async function Page({}: PageProps) {
-    const countries = await getCountries();
-    const companies = await getCompanies();
-    const counts = getCountById(companies, 'countryId');
-
-    return (
-        <DashboardCard label="Countries of companies">
-            <div className="flex items-end pb-5 px-5 gap-5 ">
-                <div>
-                    {countries.map(({id, title}) => (
-                        <p
-                            key={id}
-                            className={clsx(
-                                'text-sm text-gray-900 font-medium',
-                                'before:inline-block before:w-2 before:h-2 before:rounded-full before:align-middle before:mr-2 before:bg-purple-200',
-                            )}
-                        >{`${title} - ${counts[id] || 0}`}</p>
-                    ))}
-                </div>
-                <Image width={395} height={260} src="/images/World.svg" alt="world"/>
-            </div>
-        </DashboardCard>
-    );
-}

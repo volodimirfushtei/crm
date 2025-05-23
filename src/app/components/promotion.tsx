@@ -11,9 +11,8 @@ export interface PromotionProps {
 export default function Promotion({ promotion }: PromotionProps) {
   return (
 
-
     <div
-      className="w-[248px] h-[248px] relative rounded-lg shadow-sm overflow-hidden bg-[#e1fcfd] border border-green-50 hover:border-2 hover:border-gray-400 hover:scale-105 animate-border-spin"
+      className="w-[248px] h-[248px] relative rounded-lg shadow-sm overflow-hidden bg-[#e1fcfd] border-2 border-white hover:border-2 hover:border-amber-300 hover:scale-105 animate-border-spin"
     >
 
       <div className="relative w-full h-40 bg-gray-300 ">
@@ -26,11 +25,14 @@ export default function Promotion({ promotion }: PromotionProps) {
           <p className="text-center text-xs font-bold text-gray-50">{`-${promotion.discount}%`}</p>
         </div>
       </div>
-      <div className="flex flex-col p-5 gap-3 bg-lime-200">
-        <p className="text-base font-semibold text-gray-900">
+      <div className="flex flex-col p-5 gap-3 bg-lime-200 bg-cover bg-center " style={{
+        backgroundImage:
+          'linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.8))',
+      }}>
+        <p className="text-base font-semibold text-gray-50">
           {promotion.title}
         </p>
-        <p className="text-sm text-gray-900">{promotion.description}</p>
+        <p className="text-sm text-gray-50">{promotion.description}</p>
       </div>
       <DeletePromotionButton promotionId={promotion.id} className="absolute top-0 right-0 " />
     </div>

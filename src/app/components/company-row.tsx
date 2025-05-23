@@ -3,26 +3,34 @@ import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 import StatusLabel from '@/app/components/status-label';
-import { Company, deleteCompany } from '@/app/lib/api';
+import { Company, deleteCompany, getCompanies } from '@/app/lib/api';
 import ButtonDelete from '@/app/components/button-delete';
+import { useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 export interface CompanyRowProps {
   company: Company;
   avatar?: string;
 }
 
+
 export default function CompanyRow({ company }: CompanyRowProps) {
 
+  const queryClient = useQueryClient();
 
   async function handleDeleteCompany(companyId: string) {
     if (confirm('Are you sure you want to delete this company?')) {
       try {
         await deleteCompany(companyId);
-        alert('Company deleted successfully!');
-        // перезавантажити дані чи зробити навігацію
+        toast.success('Company deleted successfully!');
+
+        // ⬇️ Інвалідовуємо кеш — запит виконається заново
+        await queryClient.invalidateQueries({ queryKey: ['companies'] });
+        await getCompanies();
+
       } catch (error) {
         console.error('Failed to delete company:', error);
-        alert('Failed to delete company.');
+        toast.error('Failed to delete company.');
       }
     }
   }
@@ -35,7 +43,7 @@ export default function CompanyRow({ company }: CompanyRowProps) {
       </td>
       <td>
         <Link className="flex flex-row gap-1 items-center justify-center"
-              href={`/companies/${company.id}`}><img className="object-cover"
+              href={`/companies/${company.id}`}><img className="object-contain"
                                                      width={28}
                                                      height={28}
                                                      src={company.avatar && company.avatar.startsWith('http') ? company.avatar : `/icons/${company.avatar || 'company-logo'}.svg`}

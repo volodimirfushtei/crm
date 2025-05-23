@@ -14,8 +14,9 @@ export interface CompanyStatusProps {
 export default function CompanyIt({ avatar, company, status, id }: CompanyStatusProps) {
   return (
     <div
-      className="flex flex-col  items-center justify-center rounded-lg shadow-sm drop-shadow-xl border-2  w-[268px] h-[228px]  bg-transparentBlack overflow-hidden ">
-      <div className="flex max-w-40 h-[172px] flex-col gap-5 items-center justify-center w-full ">
+      className="flex flex-col  items-center justify-center rounded-lg shadow-sm drop-shadow-xl border-2  w-[268px] h-[228px] bg-[linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.8))] bg-cover bg-center  ">
+      <div
+        className="flex max-w-40 h-[172px] flex-col gap-5 items-center justify-center w-full ">
         <Image className="object-cover object-center"
                alt="logo company"
                src={avatar && avatar.startsWith('http') ? avatar : `/icons/${avatar || 'company-logo'}.svg`}
@@ -28,5 +29,5 @@ export default function CompanyIt({ avatar, company, status, id }: CompanyStatus
       </div>
     </div>
   );
-}
+} 
 

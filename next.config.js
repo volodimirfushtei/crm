@@ -1,13 +1,14 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  allowedDevOrigins: [
-    'http://192.168.31.49',
-
-  ],
+  allowedDevOrigins: ['http://192.168.31.49'],
   images: {
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '/**',
+      },
       {
         protocol: 'https',
         hostname: 'readdy.ai',
@@ -33,11 +34,11 @@ const nextConfig = {
         hostname: 'loremflickr.com',
         pathname: '/**',
       },
-
     ],
   },
 };
 
 module.exports = nextConfig;
+
 
 

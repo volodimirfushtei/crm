@@ -8,6 +8,9 @@ import Button from '@/app/components/button';
 import InputField from '@/app/components/input-field';
 import LogoUploader from '@/app/components/logo-uploader';
 import { createCompany } from '@/app/lib/api';
+import { useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+
 
 export type CompanyFieldValues = {
   name: string;
@@ -34,6 +37,7 @@ export interface CompanyFormProps {
 export default function CompanyForm({ onSubmitAction }: CompanyFormProps) {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
+  const queryClient = useQueryClient();
 
   const handleSubmit = async (values: CompanyFieldValues) => {
     try {
@@ -47,16 +51,21 @@ export default function CompanyForm({ onSubmitAction }: CompanyFormProps) {
         description: values.description,
         avatar: avatarUrl || '',
         hasPromotions: false,
-        categoryId: '', // можна отримати з API пізніше
-        countryId: '', // те саме
+        categoryId: '',
+        countryId: '',
       });
-      alert('Company was created successfully!');
+
+      // ⬇️ Оновлення списку компаній
+      await queryClient.invalidateQueries({ queryKey: ['companies'] });
+
+      toast.success('Company was created successfully!');
+
       if (onSubmitAction) {
         onSubmitAction(values);
       }
     } catch (error) {
       console.error('Failed to create company', error);
-      alert('Failed to create company');
+      toast.error('Failed to create company');
     } finally {
       setUploading(false);
     }
@@ -65,11 +74,13 @@ export default function CompanyForm({ onSubmitAction }: CompanyFormProps) {
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form className="flex flex-col gap-10  ">
-        <p className="text-xl font-bold ">Add new company</p>
+        <h2 className="text-xl font-bold ">Add new company</h2>
         <div className="flex gap-6">
           <div className="flex flex-col flex-1 gap-6">
             <LogoUploader label="Logo" placeholder="Upload photo"
-                          onUploadAction={setAvatarUrl} id={''} />
+                          onUploadAction={(url) => {
+                            setAvatarUrl(url);
+                          }} />
             <InputField label="Status" placeholder="Status" name="status" />
             <InputField label="Country" placeholder="Country" name="country" />
           </div>

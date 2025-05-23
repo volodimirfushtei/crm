@@ -9,12 +9,13 @@ import { createPromotion, getCompany } from '@/app/lib/api';
 import Button from '@/app/components/button';
 import InputField from '@/app/components/input-field';
 import LogoUploader from '@/app/components/logo-uploader';
+import toast from 'react-hot-toast';
 
 export interface PromotionFieldValues {
   title: string;
   description: string;
   discount: number;
-  avatar: string;
+  avatar?: string;
 }
 
 const initialValues: PromotionFieldValues = {
@@ -43,8 +44,9 @@ export default function PromotionForm({ companyId, onSubmit }: PromotionFormProp
   const { mutateAsync, isPending } = useMutation({
     mutationFn: createPromotion,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['promotions', companyId] });
-      await queryClient.invalidateQueries({ queryKey: ['promotions'], exact: true });
+      await queryClient.invalidateQueries({ queryKey: ['promotions'] });
+      toast.success('Promotion added successfully.');
+
     },
   });
 
@@ -66,9 +68,9 @@ export default function PromotionForm({ companyId, onSubmit }: PromotionFormProp
     } catch (error: any) {
       console.error('Помилка при створенні акції:', error);
       if (error.message.includes('Max number of elements')) {
-        alert('Максимальна кількість акцій досягнута.');
+        toast.success('Максимальна кількість акцій досягнута.');
       } else {
-        alert('Сталася помилка при створенні акції.');
+        toast.error('Сталася помилка при створенні акції.');
       }
     }
   };
@@ -86,7 +88,6 @@ export default function PromotionForm({ companyId, onSubmit }: PromotionFormProp
             placeholder="Upload photo"
             id="avatar"
             onUploadAction={(url) => {
-
               setAvatarUrl(url || undefined);
             }}
           />

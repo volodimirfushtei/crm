@@ -144,11 +144,17 @@ export const createCompany = (data: any) => {
   });
 };
 
-export const deleteCompany = (id: string, init?: RequestInit) => {
-  return sendRequest<Company>(buildUrl('companies', id), {
+export const deleteCompany = (companyId: string) => {
+  const url = buildUrl('companies', companyId);
+  console.log('Deleting company at:', url);
+  const res = fetch(url, {
     method: 'DELETE',
-    ...init,
+    headers: { 'content-type': 'application/json' },
   });
+
+  if (!res) {
+    throw new Error(`Не вдалося видалити компанію. Статус: ${res}`);
+  }
 };
 
 export const createPromotion = async (
@@ -170,7 +176,7 @@ export const createPromotion = async (
 export const deletePromotion = async (promotionId: string): Promise<void> => {
   const url = buildUrl('promotions', promotionId);
 
-  console.log('Deleting promotion at:', url); // 🔍 Додайте цей рядок для дебагу
+  console.log('Deleting promotion at:', url);
 
   const response = await fetch(url, {
     method: 'DELETE',
@@ -185,3 +191,13 @@ export const deletePromotion = async (promotionId: string): Promise<void> => {
 };
 
 
+export async function signIn(email: string, password: string) {
+  // Симуляція
+  return new Promise<{ token: string }>((resolve, reject) => {
+    setTimeout(() => {
+
+      resolve({ token: 'fake-jwt-token' });
+
+    }, 1000);
+  });
+}
