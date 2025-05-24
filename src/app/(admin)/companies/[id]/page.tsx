@@ -15,6 +15,7 @@ interface PageProps {
 }
 
 export default async function Page({ params }: PageProps) {
+
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery({

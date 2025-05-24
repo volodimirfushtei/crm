@@ -1,6 +1,6 @@
 import './globals.css';
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import type { Metadata } from 'next';
+
 import 'remixicon/fonts/remixicon.css';
 import Providers from '@/app/components/providers';
 import React from 'react';
@@ -8,10 +8,6 @@ import { Toaster } from 'react-hot-toast';
 
 const font = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'TruScape',
-  description: 'Business Intelligence Platform',
-};
 
 export default function RootLayout({
                                      children,

@@ -1,16 +1,9 @@
-import React from 'react';
-import PromotionsForm from '@/app/components/promotions-form';
+'use client';
+import React, { use } from 'react';
 
-export interface PageProps {
-  params: { id: string };
+export default function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
+
+  return <div>Company ID: {id}</div>;
 }
 
-export default async function Page({ params }: PageProps) {
-  const id = params.id;
-
-  return (
-    <div className="py-6 px-10 ">
-      <PromotionsForm companyId={id} />
-    </div>
-  );
-}

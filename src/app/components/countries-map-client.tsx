@@ -1,6 +1,3 @@
-// src/app/components/countries-map-client.tsx
-'use client';
-
 // src/app/components/countries-map-client.ts
 'use client';
 
