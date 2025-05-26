@@ -5224,7 +5224,7 @@ stylelint-config-standard@^38.0.0:
   dependencies:
     stylelint-config-recommended "^16.0.0"
 
-stylelint@^16.16.0, stylelint@^16.18.0, stylelint@^16.19.1:
+stylelint@^16.16.0, stylelint@^16.18.0:
   version "16.19.1"
   resolved "https://registry.npmjs.org/stylelint/-/stylelint-16.19.1.tgz"
   integrity sha512-C1SlPZNMKl+d/C867ZdCRthrS+6KuZ3AoGW113RZCOL0M8xOGpgx7G70wq7lFvqvm4dcfdGFVLB/mNaLFChRKw==
