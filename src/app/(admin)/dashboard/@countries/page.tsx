@@ -13,8 +13,6 @@ export default async function Page() {
   const someLookup: Record<string, { lat: number; lng: number }> = {
     canada: { lat: 56.1304, lng: -106.3468 },
     usa: { lat: 37.0902, lng: -95.7129 },
-
-
     italia: { lat: 41.8719, lng: 12.5674 },
     spain: { lat: 40.4637, lng: -3.7492 },
     ukraine: { lat: 48.3794, lng: 31.1656 },
@@ -23,13 +21,12 @@ export default async function Page() {
 
 
   const mapCountries: MapCountry[] = apiCountries.map((c) => {
-    const key = c.title.toLowerCase().replace(/\s+/g, '_'); // 🔁 змінено
+    const key = c.title.toLowerCase().replace(/\s+/g, '_'); //
     const coords = someLookup[key];
 
     if (!coords) {
       console.warn(`No coords  "${c.title}" → "${key}"`);
     }
-
     return {
       name: c.title,
       count: Math.floor(Math.random() * 100),
@@ -38,9 +35,7 @@ export default async function Page() {
     };
   });
 
-
   return (
-
     <DashboardCard label="Countrties">
       <CountriesMapClient countries={mapCountries} />
     </DashboardCard>
