@@ -60,8 +60,9 @@ export interface Promotion {
 //--------------------------------------------------------------------------------------------------------
 
 const PROJECT_TOKEN = process.env.NEXT_PUBLIC_PROJECT_TOKEN;
-const buildUrl = (...paths: string[]) =>
-  `https://${PROJECT_TOKEN}.mockapi.io/api/v1/${paths.join('/')}`;
+const buildUrl = (...parts: string[]) =>
+  `http://localhost:3001/${parts.join('/')}`;
+
 
 const stringifyQueryParams = (params: Record<string, string>) =>
   new URLSearchParams(params).toString();
@@ -95,20 +96,20 @@ const sendRequest1 = async <T>(url: string, init?: RequestInit) => {
 
 
 export const getSummaryStats = (init?: RequestInit) => {
-  return sendRequest1<SummaryStats>(buildUrl1('summary-stats', '1'), init);
+  return sendRequest<SummaryStats>(buildUrl('summary-stats', '1'), init);
 };
 
 export const getSummarySales = (init?: RequestInit) => {
-  return sendRequest1<SummarySales[]>(buildUrl1('summary-sales'), init);
+  return sendRequest<SummarySales[]>(buildUrl('summary-sales'), init);
 };
 
 export const getCountries = (init?: RequestInit) => {
-  return sendRequest1<Country[]>(buildUrl1('countries'), init);
+  return sendRequest<Country[]>(buildUrl('countries'), init);
 };
 
 
 export const getCategories = (init?: RequestInit) => {
-  return sendRequest1<Category[]>(buildUrl1('categories'), init);
+  return sendRequest<Category[]>(buildUrl('categories'), init);
 };
 
 

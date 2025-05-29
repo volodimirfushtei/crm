@@ -18,9 +18,9 @@ export default async function Page({}: PageProps) {
 
   return (
     <DashboardCard label="Categories of companies">
-      <div className="grid grid-cols-12 gap-3 pb-5 px-5 cursor-pointer drop-shadow-xl ">
+      <div className="grid grid-cols-12 gap-3 pb-5 px-5 cursor-pointer drop-shadow-xl   ">
         {categories.map(({ id, title }) => (
-          <div key={id} className="col-span-3 ">
+          <div key={id} className="col-span-3 transition-transform duration-200 hover:scale-105 hover: drop-shadow-xl ">
             <StatCard
               type={StatCardType.Dark}
               label={title}

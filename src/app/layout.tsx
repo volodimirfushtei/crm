@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="uk" className={font.className}>
     <body className="flex">
-    <main className="ml-64 flex-1 min-h-screen">
+    <main className="ml-64 flex-1 min-h-screen ">
       <Toaster position="top-right" />
       <Providers>
         {children}

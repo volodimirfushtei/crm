@@ -16,9 +16,9 @@ export default function Solutions({ solutions }: SolutionsSectionProps) {
   return (
     <section id="solutions"
              className="py-24 bg-[url('https://readdy.ai/api/search-image?query=elegant%2520business%2520background%2520with%2520flowing%2520curves%2520and%2520soft%2520geometric%2520shapes%252C%2520light%2520cream%2520and%2520sage%2520green%2520colors%252C%2520professional%2520style&width=1920&height=1080&seq=8&orientation=landscape')] bg-cover bg-center">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          <div className="w-full lg:w-1/2">
+      <div className="container mx-auto px-6 ">
+        <div className="flex flex-col lg:flex-row items-center gap-12 ">
+          <div className="w-full lg:w-1/2 ">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Solutions for Every Industry</h2>
             <p className="text-xl text-gray-600 mb-8">
               Whether you're in finance, healthcare, retail, or technology, our platform adapts to your

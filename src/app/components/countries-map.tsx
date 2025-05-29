@@ -49,7 +49,7 @@ export default function CountriesMap({ countries }: { countries: CountryMap[] })
         })}
       </div>
       {/* Легенда знизу */}
-      <ul className="absolute bottom-5 left-6 bg-white/80 p-3 rounded-md space-y-1 z-[10]">
+      <ul className="absolute bottom-5 left-6 bg-white/80 p-3 rounded-md space-y-1 z-[10] ">
         {countries.map((country) => (
           <li
             key={country.name}

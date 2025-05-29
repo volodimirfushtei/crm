@@ -1,0 +1,174 @@
+{
+  "companies": [
+    {
+      "id": "42",
+      "title": "AAA",
+      "description": "sale",
+      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1747664234/ugjycur88qjg1rdrelqc.svg",
+      "joinedDate": "2025-05-20",
+      "hasPromotions": false,
+      "categoryId": "5",
+      "categoryTitle": "Category 5",
+      "countryId": "US",
+      "countryTitle": "USA",
+      "status": "active"
+    },
+    {
+      "id": "43",
+      "title": "BBB",
+      "description": "new arrivals",
+      "avatar": "https://res.cloudinary.com/demo/image/upload/v1234567890/sample.png",
+      "joinedDate": "2025-01-15",
+      "hasPromotions": true,
+      "categoryId": "3",
+      "categoryTitle": "Category 3",
+      "countryId": "CA",
+      "countryTitle": "Canada",
+      "status": "pending"
+    },
+    {
+      "id": "1aae",
+      "title": "ATB",
+      "status": "active",
+      "countryTitle": "US",
+      "categoryTitle": "Category 5",
+      "joinedDate": "2025-05-29",
+      "description": "sale",
+      "avatar": "",
+      "hasPromotions": false,
+      "categoryId": "7",
+      "countryId": "CA"
+    },
+    {
+      "id": "f240",
+      "title": "AAA",
+      "status": "active",
+      "countryTitle": "USA",
+      "categoryTitle": "Category 6",
+      "joinedDate": "2025-05-30",
+      "description": "sale",
+      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748539210/khp3kqavbbrmlxkaznnl.svg",
+      "hasPromotions": false,
+      "categoryId": "",
+      "countryId": ""
+    }
+  ],
+  "promotions": [
+    {
+      "id": "1",
+      "title": "title 1",
+      "description": "description 1",
+      "avatar": "https://loremflickr.com/2652/2061?lock=423771298487855",
+      "discount": 76,
+      "companyId": "companyId 1",
+      "companyTitle": "companyTitle 1"
+    },
+    {
+      "id": "2",
+      "title": "title 2",
+      "description": "description 1",
+      "avatar": "https://loremflickr.com/2652/2061?lock=423771298487855",
+      "discount": 76,
+      "companyId": "42",
+      "companyTitle": "AAA"
+    },
+    {
+      "id": "3",
+      "title": "Mega Discount",
+      "description": "Save big on our new products",
+      "avatar": "https://loremflickr.com/2652/2061?lock=123456789",
+      "discount": 50,
+      "companyId": "43",
+      "companyTitle": "BBB"
+    },
+    {
+      "id": "f7c1",
+      "title": "Metro",
+      "description": "reee",
+      "discount": 33,
+      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748539247/za4f0vhvlofhl53snabb.png",
+      "companyId": "f240",
+      "companyTitle": "AAA"
+    }
+  ],
+  "categories": [
+    {
+      "id": "3",
+      "title": "Category 3"
+    },
+    {
+      "id": "5",
+      "title": "Category 5"
+    },
+    {
+      "id": "6",
+      "title": "Category 6"
+    },
+    {
+      "id": "1",
+      "title": "Category 1"
+    },
+    {
+      "id": "2",
+      "title": "Category 2"
+    },
+    {
+      "id": "4",
+      "title": "Category 4"
+    }
+  ],
+  "countries": [
+    {
+      "id": "US",
+      "title": "USA"
+    },
+    {
+      "id": "CA",
+      "title": "Canada"
+    },
+    {
+      "id": "IT",
+      "title": "Italia"
+    },
+    {
+      "id": "Sp",
+      "title": "Spain"
+    },
+    {
+      "id": "UA",
+      "title": "Ukraine"
+    }
+  ],
+  "summary-sales": [
+    {
+      "id": "1",
+      "companyId": "42",
+      "companyTitle": "AAA",
+      "sold": 150,
+      "income": 12000
+    },
+    {
+      "id": "2",
+      "companyId": "43",
+      "companyTitle": "BBB",
+      "sold": 90,
+      "income": 7200
+    },
+    {
+      "id": "3",
+      "companyId": "44",
+      "companyTitle": "CCC",
+      "sold": 230,
+      "income": 19800
+    }
+  ],
+  "summary-stats": [
+    {
+      "id": "1",
+      "promotions": 12,
+      "categories": 5,
+      "newCompanies": 3,
+      "activeCompanies": 18
+    }
+  ]
+}
