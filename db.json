@@ -49,6 +49,32 @@
       "description": "sale",
       "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748539210/khp3kqavbbrmlxkaznnl.svg",
       "hasPromotions": false,
+      "categoryId": "5",
+      "countryId": ""
+    },
+    {
+      "id": "f98a",
+      "title": "AAA",
+      "status": "active",
+      "countryTitle": "USA",
+      "categoryTitle": "Category 5",
+      "joinedDate": "2025-05-30",
+      "description": "Total sale",
+      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748625895/s8jhccnuzyszie2bz2wt.png",
+      "hasPromotions": false,
+      "categoryId": "8",
+      "countryId": ""
+    },
+    {
+      "id": "efa",
+      "title": "WWW",
+      "status": "active",
+      "countryTitle": "USA",
+      "categoryTitle": "Category 1",
+      "joinedDate": "2025-05-31",
+      "description": "sale",
+      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748696685/oyeiauzcbyugkmxzrrxd.jpg",
+      "hasPromotions": false,
       "categoryId": "",
       "countryId": ""
     }
@@ -89,6 +115,41 @@
       "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748539247/za4f0vhvlofhl53snabb.png",
       "companyId": "f240",
       "companyTitle": "AAA"
+    },
+    {
+      "id": "bb99",
+      "title": "Metro",
+      "description": "sale",
+      "discount": 50,
+      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748626002/faojv96f0kvca60yqjnw.png",
+      "companyId": "42",
+      "companyTitle": "AAA"
+    },
+    {
+      "id": "982e",
+      "title": "Serr",
+      "description": "reee",
+      "discount": 20,
+      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748626035/qg4vlcc3parfu5r1dhtk.png",
+      "companyId": "42",
+      "companyTitle": "AAA"
+    },
+    {
+      "id": "1ab7",
+      "title": "Fd",
+      "description": "reee",
+      "discount": 30,
+      "companyId": "1aae",
+      "companyTitle": "ATB"
+    },
+    {
+      "id": "dc5b",
+      "title": "ijilnlk",
+      "description": "Total sale",
+      "discount": 20,
+      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748696767/mtq1bvi5polrvpdwahfv.png",
+      "companyId": "1aae",
+      "companyTitle": "ATB"
     }
   ],
   "categories": [
@@ -115,6 +176,14 @@
     {
       "id": "4",
       "title": "Category 4"
+    },
+    {
+      "id": "7",
+      "title": "Category 7"
+    },
+    {
+      "id": "8",
+      "title": "Category 8"
     }
   ],
   "countries": [
@@ -160,11 +229,18 @@
       "companyTitle": "CCC",
       "sold": 230,
       "income": 19800
+    },
+    {
+      "id": "4",
+      "companyId": "46",
+      "companyTitle": "CCC",
+      "sold": 280,
+      "income": 1500
     }
   ],
   "summary-stats": [
     {
-      "id": "1",
+      "id": "4",
       "promotions": 12,
       "categories": 5,
       "newCompanies": 3,

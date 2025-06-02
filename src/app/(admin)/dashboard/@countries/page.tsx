@@ -1,8 +1,9 @@
 import React from 'react';
-import CountriesMapClient from '@/app/components/countries-map';
+import CountriesMap from '@/app/components/countries-map';
 import { Country as ApiCountry, getCountries } from '@/app/lib/api';
 import { CountryMap as MapCountry } from '../../../../../types/country';
 import DashboardCard from '@/app/components/dashboard-card'; // тип, який очікує CountriesMap
+export const dynamic = 'force-dynamic';
 
 export default async function Page() {
 
@@ -37,7 +38,7 @@ export default async function Page() {
 
   return (
     <DashboardCard label="Countrties">
-      <CountriesMapClient countries={mapCountries} />
+      <CountriesMap countries={mapCountries} />
     </DashboardCard>
 
   );

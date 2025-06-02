@@ -60,14 +60,22 @@ export interface Promotion {
 //--------------------------------------------------------------------------------------------------------
 
 const PROJECT_TOKEN = process.env.NEXT_PUBLIC_PROJECT_TOKEN;
-const buildUrl = (...parts: string[]) =>
-  `http://localhost:3001/${parts.join('/')}`;
+
+
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL;
+
+
+export const buildUrl = (...parts: string[]) =>
+  [API_URL, ...parts].join('/');
 
 
 const stringifyQueryParams = (params: Record<string, string>) =>
   new URLSearchParams(params).toString();
 const sendRequest = async <T>(url: string, init?: RequestInit) => {
   const res = await fetch(url, init);
+
+
   if (!res.ok) {
     throw new Error(await res.text());
   }
