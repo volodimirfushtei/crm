@@ -42,12 +42,13 @@ export default function CompanyRow({ company }: CompanyRowProps) {
         {company.categoryTitle}
       </td>
       <td>
-        <Link className="flex flex-row gap-1 items-center justify-center"
-              href={`/companies/${company.id}`}><img className="object-contain"
-                                                     width={28}
-                                                     height={28}
-                                                     src={company.avatar && company.avatar.startsWith('http') ? company.avatar : `/icons/${company.avatar || 'company-logo'}.svg`}
-                                                     alt={'avatar'} />{company.title}
+        <Link
+          className="flex  h-8 flex-row gap-1 items-center justify-center border-2  rounded-2xl  bg-lime-100  "
+          href={`/companies/${company.id}`}><img className="object-contain"
+                                                 width={28}
+                                                 height={28}
+                                                 src={company.avatar && company.avatar.startsWith('http') ? company.avatar : `/icons/${company.avatar || 'company-logo'}.svg`}
+                                                 alt={'avatar'} />{company.title}
         </Link>
       </td>
       <td>
