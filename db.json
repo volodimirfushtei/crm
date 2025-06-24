@@ -64,19 +64,6 @@
       "hasPromotions": false,
       "categoryId": "8",
       "countryId": ""
-    },
-    {
-      "id": "efa",
-      "title": "WWW",
-      "status": "active",
-      "countryTitle": "USA",
-      "categoryTitle": "Category 1",
-      "joinedDate": "2025-05-31",
-      "description": "sale",
-      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748696685/oyeiauzcbyugkmxzrrxd.jpg",
-      "hasPromotions": false,
-      "categoryId": "",
-      "countryId": ""
     }
   ],
   "promotions": [
@@ -108,15 +95,6 @@
       "companyTitle": "BBB"
     },
     {
-      "id": "bb99",
-      "title": "Metro",
-      "description": "sale",
-      "discount": 50,
-      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748626002/faojv96f0kvca60yqjnw.png",
-      "companyId": "42",
-      "companyTitle": "AAA"
-    },
-    {
       "id": "982e",
       "title": "Serr",
       "description": "reee",
@@ -141,6 +119,14 @@
       "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748696767/mtq1bvi5polrvpdwahfv.png",
       "companyId": "1aae",
       "companyTitle": "ATB"
+    },
+    {
+      "id": "ddd2",
+      "title": "dsdad",
+      "description": "dsdsa",
+      "discount": 30,
+      "companyId": "42",
+      "companyTitle": "AAA"
     }
   ],
   "categories": [
