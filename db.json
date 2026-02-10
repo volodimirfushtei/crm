@@ -1,45 +1,6 @@
 {
   "companies": [
     {
-      "id": "42",
-      "title": "AAA",
-      "description": "sale",
-      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1747664234/ugjycur88qjg1rdrelqc.svg",
-      "joinedDate": "2025-05-20",
-      "hasPromotions": false,
-      "categoryId": "5",
-      "categoryTitle": "Category 5",
-      "countryId": "US",
-      "countryTitle": "USA",
-      "status": "active"
-    },
-    {
-      "id": "43",
-      "title": "BBB",
-      "description": "new arrivals",
-      "avatar": "https://res.cloudinary.com/demo/image/upload/v1234567890/sample.png",
-      "joinedDate": "2025-01-15",
-      "hasPromotions": true,
-      "categoryId": "3",
-      "categoryTitle": "Category 3",
-      "countryId": "CA",
-      "countryTitle": "Canada",
-      "status": "pending"
-    },
-    {
-      "id": "1aae",
-      "title": "ATB",
-      "status": "active",
-      "countryTitle": "US",
-      "categoryTitle": "Category 5",
-      "joinedDate": "2025-05-29",
-      "description": "sale",
-      "avatar": "",
-      "hasPromotions": false,
-      "categoryId": "7",
-      "countryId": "CA"
-    },
-    {
       "id": "f240",
       "title": "AAA",
       "status": "active",
@@ -64,6 +25,19 @@
       "hasPromotions": false,
       "categoryId": "8",
       "countryId": ""
+    },
+    {
+      "id": "b4b6",
+      "title": "ABC",
+      "status": "active",
+      "countryTitle": "France",
+      "categoryTitle": "Category 8",
+      "joinedDate": "2026-02-04",
+      "description": "Sale 30%",
+      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1770575868/ycm6lpsv2xc6ft3qijqr.png",
+      "hasPromotions": false,
+      "categoryId": "",
+      "countryId": ""
     }
   ],
   "promotions": [
@@ -77,55 +51,19 @@
       "companyTitle": "companyTitle 1"
     },
     {
-      "id": "2",
-      "title": "title 2",
-      "description": "description 1",
-      "avatar": "https://loremflickr.com/2652/2061?lock=423771298487855",
-      "discount": 76,
-      "companyId": "42",
-      "companyTitle": "AAA"
+      "id": "e590",
+      "title": "new prom",
+      "description": "Sale 20%",
+      "discount": -20,
+      "companyId": "b4b6",
+      "companyTitle": "ABC"
     },
     {
-      "id": "3",
-      "title": "Mega Discount",
-      "description": "Save big on our new products",
-      "avatar": "https://loremflickr.com/2652/2061?lock=123456789",
-      "discount": 50,
-      "companyId": "43",
-      "companyTitle": "BBB"
-    },
-    {
-      "id": "982e",
-      "title": "Serr",
-      "description": "reee",
-      "discount": 20,
-      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748626035/qg4vlcc3parfu5r1dhtk.png",
-      "companyId": "42",
-      "companyTitle": "AAA"
-    },
-    {
-      "id": "1ab7",
-      "title": "Fd",
-      "description": "reee",
-      "discount": 30,
-      "companyId": "1aae",
-      "companyTitle": "ATB"
-    },
-    {
-      "id": "dc5b",
-      "title": "ijilnlk",
-      "description": "Total sale",
-      "discount": 20,
-      "avatar": "https://res.cloudinary.com/dnso4asfb/image/upload/v1748696767/mtq1bvi5polrvpdwahfv.png",
-      "companyId": "1aae",
-      "companyTitle": "ATB"
-    },
-    {
-      "id": "ddd2",
-      "title": "dsdad",
-      "description": "dsdsa",
-      "discount": 30,
-      "companyId": "42",
+      "id": "2309",
+      "title": "xs",
+      "description": "Vine sale ",
+      "discount": 12,
+      "companyId": "f240",
       "companyTitle": "AAA"
     }
   ],
@@ -188,14 +126,14 @@
   "summary-sales": [
     {
       "id": "1",
-      "companyId": "42",
+      "companyId": null,
       "companyTitle": "AAA",
       "sold": 150,
       "income": 12000
     },
     {
       "id": "2",
-      "companyId": "43",
+      "companyId": null,
       "companyTitle": "BBB",
       "sold": 90,
       "income": 7200
