@@ -10,36 +10,37 @@ import AboutCompany from '@/app/components/about-company';
 import DiscountItem from '@/app/components/discount-item';
 import getQueryClient from '@/app/lib/utils/getQueryClient';
 
-interface PageProps {
-  params: { id: string };
+type PageProps = {
+  params: Promise<{ id: string }>
 }
+
 
 export default async function Page({ params }: PageProps) {
 
   const queryClient = getQueryClient();
-
+  const { id } = await params;
   await queryClient.prefetchQuery({
-    queryKey: ['companies', params.id],
-    queryFn: () => getCompany(params.id),
+    queryKey: ['companies', id],
+    queryFn: () => getCompany(id),
     staleTime: 10 * 1000,
   });
 
   await queryClient.prefetchQuery({
-    queryKey: ['promotions', params.id],
-    queryFn: () => getPromotions({ companyId: params.id }),
+    queryKey: ['promotions', id],
+    queryFn: () => getPromotions({ companyId: id }),
     staleTime: 10 * 1000,
   });
 
-  const company = queryClient.getQueryData(['companies', params.id]) as any;
+  const company = queryClient.getQueryData(['companies', id]) as any;
   if (!company) return notFound();
 
-  const promotions = (queryClient.getQueryData(['promotions', params.id]) as any[]) || [];
+  const promotions = (queryClient.getQueryData(['promotions', id]) as any[]) || [];
   const dehydratedState = dehydrate(queryClient);
 
   return (
     <HydrationBoundary state={dehydratedState}>
       <div className="bg-white shadow-md">
-        <Toolbar action={<AddPromotionsButton companyId={params.id} />}>
+        <Toolbar action={<AddPromotionsButton companyId={id} />}>
           <SearchInput />
         </Toolbar>
       </div>
@@ -86,7 +87,7 @@ export default async function Page({ params }: PageProps) {
               Promotions
             </h2>
             {promotions.length > 0 ? (
-              <DiscountItem companyId={params.id} />
+              <DiscountItem companyId={id} />
             ) : (
               <p className="text-gray-500 text-center">Немає акцій.</p>
             )}
